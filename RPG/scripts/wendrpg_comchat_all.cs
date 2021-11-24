@@ -719,7 +719,12 @@ function processPlayerCommands(%clientId, %team, %message, %senderName, %w1, %cr
 					if(%type == "PotionItems")	processMenuBeltDrop(%TrueClientId, "PotionItems use "@%item@" 1", 1);
 					else 						Client::SendMessage(%TrueClientId,0,"You cannot use a "@$beltItem[%item, "Name"]);
 				} else Client::SendMessage(%TrueClientId,0,"You do not have any "@$beltItem[%item, "Name"]);
-			} else Client::SendMessage(%TrueClientId,0,"There doesn't seem to be an item by that name.");
+			} else {
+				%item = String::replace(String::replace(%cropped, "#use", ""), " ", "");
+				if(HasThisStuff(%TrueClientId, %item@" 1")) {
+					Player::useItem(%TrueClientId, %item);
+				} else Client::SendMessage(%TrueClientId,0,"There doesn't seem to be an item by that name.");
+			}
 		}
 	}
 	else if(%w1 == "#deathmsg") {

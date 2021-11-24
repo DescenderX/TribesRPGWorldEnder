@@ -51,7 +51,7 @@ ItemImageData HammerImage {
 	accuFire = true;	sfxFire = SoundBluntSwingSM;	sfxActivate = SoundBladeSwingLG;
 };
 ItemData Hammer {
-	heading = "bWeapons";	description = "Hammer Pick";	className = "Weapon";
+	heading = "bWeapons";	description = "Hammer";	className = "Weapon";
 	shapeFile = "Pick";	hudIcon = "pick";	shadowDetailMask = 4;
 	imageType = HammerImage;	price = 0;	showWeaponBar = true;
 };

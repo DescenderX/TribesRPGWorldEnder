@@ -262,7 +262,7 @@ function Equalizer::onUse(%player, %item) {
 
 //________________________________________________________________________________________________________________________________________________
 // Zonechecked Bonus Items
-$BonusItem[Radium] 					= "DMG 226 1000 1";			// Radium hits you with its atomic mass
+$BonusItem[Radium] 					= "DMG 226 1000 2";			// Radium hits you with its atomic mass
 $AccessoryVar[Radium, $MiscInfo] 	= "A rare material that slowly kills";
 $BonusItemMessage[Radium]			= "The Radium you are carrying damages your health!";
 $BonusItemMessageColor[Radium]		= $MsgGreen;

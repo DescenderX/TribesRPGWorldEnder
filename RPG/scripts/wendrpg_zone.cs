@@ -330,18 +330,18 @@ function setzoneflags(%object, %z)
 				if(%bonusType == "BLEED") {
 					%attackerId = GetWord($BonusState[%clientId, %i], %z+1);
 					GameBase::virtual(%clientId, "onDamage", $DrainDamageType, $BonusStateVal[%clientId, %i], 
-					"0 0 0", "0 0 0", "0 0 0", "torso", "", %attackerId, "#bleed", true );					
+					"0 0 0", "0 0 0", "0 0 0", "torso", "", %attackerId, "#bleed", false );					
 				}
 				
 				else if(%bonusType == "POISON") {
 					%attackerId = GetWord($BonusState[%clientId, %i], %z+1);
 					GameBase::virtual(%clientId, "onDamage", $DrainDamageType, $BonusStateVal[%clientId, %i], 
-					"0 0 0", "0 0 0", "0 0 0", "torso", "", %attackerId, "poison", true );					
+					"0 0 0", "0 0 0", "0 0 0", "torso", "", %attackerId, "poison", false );					
 				}
 				
 				else if(%bonusType == "DMG") {
 					GameBase::virtual(%clientId, "onDamage", $DrainDamageType, $BonusStateVal[%clientId, %i], 
-					"0 0 0", "0 0 0", "0 0 0", "torso", "", %clientId, "", true );					
+					"0 0 0", "0 0 0", "0 0 0", "torso", "", %clientId, "", false );
 				}
 			}
 		}

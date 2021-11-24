@@ -33,10 +33,10 @@ $Server::TeamDamageScale = 1;
 $Server::JoinMOTD = "";
 $Server::AutoAssignTeams = "true";
 $Server::CurrentMaster = "0";
-$Server::FileURL = "https://tribesrpg.org/worldender/";
+$Server::FileURL = "https://descenderx.github.io/";
 $Server::FloodProtectionEnabled = "true";
 $Server::HostPublicGame = "false";
-$Server::Info = "https://tribesrpg.org/worldender/\nServer Admin: DescX\nBased on phantom's 'LTS' @ TribesRPG.org";
+$Server::Info = $Server::FileURL @ "\nServer Admin: DescX\nBased on phantom's 'LTS' @ TribesRPG.org";
 $Server::MasterAddressN0 = "t1m1.pu.net:28000 tribes.lock-load.org:28000 t1m1.kigen.co:28000 t1m2.kigen.co:28000 t1m1.tribesmasterserver.com:28000 t1m1.tribes0.com:28000 t1m1.masters.dynamix.com:28000 t1m2.masters.dynamix.com:28000 t1m3.masters.dynamix.com:28000";
 $Server::MasterAddressN1 = "t1m1.pu.net:28000 tribes.lock-load.org:28000 t1m1.kigen.co:28000 t1m2.kigen.co:28000 t1m1.tribesmasterserver.com:28000 t1m1.tribes0.com:28000 t1ukm1.masters.dynamix.com:28000 t1ukm2.masters.dynamix.com:28000 t1ukm3.masters.dynamix.com:28000";
 $Server::MasterAddressN2 = "t1m1.pu.net:28000 tribes.lock-load.org:28000 t1m1.kigen.co:28000 t1m2.kigen.co:28000 t1m1.tribesmasterserver.com:28000 t1m1.tribes0.com:28000 t1aum1.masters.dynamix.com:28000 t1aum2.masters.dynamix.com:28000 t1aum3.masters.dynamix.com:28000";
@@ -49,7 +49,7 @@ $Server::MinVotesPct = "0.5";
 $Server::MinVoteTime = "45";
 $server::modinfo = $Server::Info;
 $Server::numMasters = "9";
-$Server::Password = "password";
+$Server::Password = "";
 $Server::Port = "28002";
 $Server::respawnTime = "0";
 $Server::TeamDamageScale = "1";
@@ -91,6 +91,7 @@ $Server::XLMasterN4 = "IP:66.39.167.52:28000";
 $Server::XLMasterN5 = "IP:173.27.47.107:28000";
 $Server::XLMasterN6 = "IP:216.249.100.66:28000";
 $Server::XLMasterN7 = "IP:209.223.236.114:28000";
+$rpgver = "0.4";
 
 
 function dbecho(%mode, %s){
@@ -129,7 +130,7 @@ function remoteSetCLInfo(%clientId, %skin, %name, %email, %tribe, %url, %info, %
    if(%msgMask != "")
       %clientId.messageFilter = %msgMask;
 
-	if(%rpv == ""){		if(%info == ""){//Reasonably certain they don't have it.			newKick(%clientId, "You must download RPG mod to play here. Download site: www.TribesRPG.org");		}		else{			remoteEval(%clientId, MODInfo, "Your copy of RPG may be out of date. Please visit www.TribesRPG.org to update.");		}	}	%flag = False;	%list = GetPlayerIdList();	for(%i = 0; (%id = GetWord(%list, %i)) != -1; %i++){		%n = rpg::getName(%id);		if(String::Compare(%n, %clname) == 0 && %id != %clientId){			%eflag = True;			if(string::compare(fetchData(%id,"Password"), %info) == 0){				%flag = True;				break;			}		}	}	if(%flag){
+	if(%rpv == ""){		if(%info == ""){//Reasonably certain they don't have it.			newKick(%clientId, "Download World Ender at: " @ $Server::FileURL);		}	}	%flag = False;	%list = GetPlayerIdList();	for(%i = 0; (%id = GetWord(%list, %i)) != -1; %i++){		%n = rpg::getName(%id);		if(String::Compare(%n, %clname) == 0 && %id != %clientId){			%eflag = True;			if(string::compare(fetchData(%id,"Password"), %info) == 0){				%flag = True;				break;			}		}	}	if(%flag){
 		newKick(%id);
 		newKick(%clientId, "Ghosted player dropped, please reconnect.");	}	else if(%eflag)	{		//This only happens if the player connecting a duplicate name doesn't		//share a password with the existing player.		//Makes sense to give them a little time out for bad behaviour.		%hisip = Client::getTransportAddress(%clientId);		BanList::add(%hisip, 30);	}
 }
@@ -204,7 +205,7 @@ function createServer(%mission, %dedicated)
 	%ms = %ms * 4;	for(%i=0; %i <= %ms; %i++)	{		getrandom();	}
 	if(!$SinglePlayer)		$pref::lastMission = %mission;
 
-	$MODInfo = "www.tribesrpg.org/worldender\n";
+	$MODInfo = $Server::FileURL @ "\n";
 	if(!$dedicated){
 		//display the "loading" screen
 		cursorOn(MainWindow);
@@ -235,8 +236,7 @@ function createServer(%mission, %dedicated)
 	exec(wendrpg_charfunk);
 	exec(wendrpg_connectivity);
 
-	exec(wendrpg_version);
-	setWindowTitle( "0/" @ $server::maxplayers @ " TribesRPG [" @ $rpgver @ "]" );
+	setWindowTitle( "0/" @ $server::maxplayers @ " World Ender [" @ $rpgver @ "]" );
 
 	exec(wendrpg_house);
 	exec(wendrpg_skills);
@@ -378,7 +378,7 @@ function rpg::UpdateServerName() {
 	else if($EndOfTheWorld >= 3) 	%stateName = "Parted Skies";
 	else if($EndOfTheWorld >= 1) 	%stateName = "Condensing";
 	else							%stateName = "Darkness";
-	$Server::HostName = $Server::BaseHostName @ "| v0.4 [fixed] |Cycle #" @ ($CyclesCompleted + 1) @ ": " @ %stateName;
+	$Server::HostName = $Server::BaseHostName @ " | v" @ $rpgver @ " | Cycle #" @ ($CyclesCompleted + 1) @ ": " @ %stateName;
 }
 
 function Server::nextMission(%replay)

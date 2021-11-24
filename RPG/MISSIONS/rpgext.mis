@@ -1377,6 +1377,8 @@ instant SimGroup "MissionGroup" {
 		instant StaticShape "templetoicon" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-4483.82 -233.079 43.0239";rotation = "0 0 0";};
 		instant StaticShape "undercty1" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-4896.51 -1168.24 -148.696";rotation = "0 0 0";};
 		instant StaticShape "undercty2" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-4911.11 -1040.16 -179.698";rotation = "0 0 0";}; 
+		instant StaticShape "digtowell" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-3603.63 2421.58 267.509";rotation = "0 0 0";}; 
+		instant StaticShape "welltodig" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-401.621 -224.302 18.3008";rotation = "0 0 0";}; 
 	};
 
 // Geoastric bridge
@@ -1733,22 +1735,22 @@ instant SimGroup "MissionGroup" {
 		};
 
 		// RED
-		instant StaticShape "Radium 25 Quartz 15 Ruby 90 Gold 50 Keldrinite 50" { crystaltype = "Crystals2";
+		instant StaticShape "Radium 25 Quartz 100 Ruby 750 Gold 50 Keldrinite 15000" { crystaltype = "Crystals2";
 			dataBlock = "Crystals2";name = "";position = "-1544 -1116 293.125";rotation = "0 0 0";destroyable = "True";deleteOnDestroy = "False";locked = "0";
 		};		
-		instant StaticShape "Ruby 66 Iron 75 Copper 50 Gold 50 Keldrinite 15" { crystaltype = "Crystals2";
+		instant StaticShape "Ruby 750 Quartz 100 Iron 150 Copper 50 Gold 50 Keldrinite 5000" { crystaltype = "Crystals2";
 			dataBlock = "Crystals2";name = "geostrol1";position = "-1805.6 876 668";rotation = "-1.5 0 0";destroyable = "True";deleteOnDestroy = "False";locked = "0";
 		};
-		instant StaticShape "Ruby 75 Iron 66 Copper 50 Aluminum 50 Keldrinite 15" { crystaltype = "Crystals2";
+		instant StaticShape "Ruby 750 Quartz 100 Iron 150 Copper 50 Aluminum 50 Keldrinite 5000" { crystaltype = "Crystals2";
 			dataBlock = "Crystals2";name = "geostrol2";position = "-1956.8 923 679";rotation = "0 1.56 0";destroyable = "True";deleteOnDestroy = "False";locked = "0";	
 		};
-		instant StaticShape "Ruby 66 Iron 75 Copper 50 Silver 50 Keldrinite 15" { crystaltype = "Crystals2";
+		instant StaticShape "Ruby 750 Quartz 100 Iron 150 Copper 50 Silver 50 Keldrinite 5000" { crystaltype = "Crystals2";
 			dataBlock = "Crystals2";name = "cravv1";position = "-1568.27 1711.77 331.936";rotation = "0 0 0";destroyable = "True";deleteOnDestroy = "False";locked = "0";	
 		};
-		instant StaticShape "Ruby 75 Iron 66 Copper 50 Silver 50 Keldrinite 15" { crystaltype = "Crystals2";
+		instant StaticShape "Ruby 750 Quartz 100 Iron 150 Copper 50 Silver 50 Keldrinite 5000" { crystaltype = "Crystals2";
 			dataBlock = "Crystals2";name = "cravv2";position = "-1542.01 1752.03 329.936";rotation = "0 0 0";destroyable = "True";deleteOnDestroy = "False";locked = "0";	
 		};
-		instant StaticShape "Ruby 75 Iron 75 Copper 75 Keldrinite 15" { crystaltype = "Crystals2";
+		instant StaticShape "Ruby 750 Quartz 100 Iron 150 Copper 50 Keldrinite 5000" { crystaltype = "Crystals2";
 			dataBlock = "Crystals2";name = "cravv3";position = "-1574.1 1757.76 334.936";rotation = "0 0 0";destroyable = "True";deleteOnDestroy = "False";locked = "0";	
 		};
 
@@ -1771,24 +1773,24 @@ instant SimGroup "MissionGroup" {
 		
 		
 		// GREEN
-		instant StaticShape "Jade 75 Emerald 75 Silver 35 SmallRock -100 Ruby -200 Iron -200 Copper 75 Radium 80" { crystaltype = "Crystals4";
+		instant StaticShape "Jade 150 Emerald 500 Silver 350 SmallRock -100 Ruby -200 Iron -200 Copper 50 Radium 80" { crystaltype = "Crystals4";
 			dataBlock = "Crystals4";name = "orccrys1";position = "495.5 -263.824 325.645";rotation = "0 0 0";destroyable = "True";deleteOnDestroy = "False";locked = "0";
 		};		
 		
-		instant StaticShape "Jade 75 Emerald 75 Gold 35 SmallRock -25 Ruby -200 Iron -200 Copper 75" { crystaltype = "Crystals4";
+		instant StaticShape "Jade 150 Emerald 500 Gold 35 SmallRock -25 Ruby -200 Iron -200 Copper 50" { crystaltype = "Crystals4";
 			dataBlock = "Crystals4";name = "oldethcrys1";position = "103.039 2270.38 11";rotation = "-0.244355 0.16233 1.47106";destroyable = "True";deleteOnDestroy = "False";locked = "0";
 		};
-		instant StaticShape "Jade 75 Emerald 75 Silver 35 SmallRock -50 Ruby -200 Iron -200 Copper 75 Radium 50" { crystaltype = "Crystals4";
+		instant StaticShape "Jade 150 Emerald 500 Silver 350 SmallRock -50 Ruby -200 Iron -200 Copper 50 Radium 50" { crystaltype = "Crystals4";
 			dataBlock = "Crystals4";name = "oldethcrys2";position = "289.234 2232.89 15.7";rotation = "0.144355 0.16233 1";destroyable = "True";deleteOnDestroy = "False"; locked = "0";
 		};
 		
-		instant StaticShape "Jade 75 Emerald 75 Gold 35 SmallRock -150 Granite -200 Iron -200 Copper 75 Radium 50" { crystaltype = "Crystals4";
+		instant StaticShape "Jade 150 Emerald 500 Gold 350 SmallRock -150 Granite -200 Iron -200 Copper 50 Radium 50" { crystaltype = "Crystals4";
 			dataBlock = "Crystals4";name = "jheri1";position = "31.6337 273.135 2.8";rotation = "0 0 1";destroyable = "True";deleteOnDestroy = "False"; locked = "0";
 		};
-		instant StaticShape "Jade 75 Emerald 75 Silver 35 SmallRock -50 Granite -200 Iron -200 Copper 75" { crystaltype = "Crystals4";
+		instant StaticShape "Jade 150 Emerald 500 Silver 350 SmallRock -50 Granite -200 Iron -200 Copper 50" { crystaltype = "Crystals4";
 			dataBlock = "Crystals4";name = "jheri2";position = "19.1992 300.427 4.9";rotation = "0 0 1";destroyable = "True";deleteOnDestroy = "False"; locked = "0";
 		};
-		instant StaticShape "Jade 75 Emerald 75 Gold 35 SmallRock -100 Granite -200 Iron -200 Copper 75 Radium 50" { crystaltype = "Crystals4";
+		instant StaticShape "Jade 150 Emerald 500 Gold 350 SmallRock -100 Granite -200 Iron -200 Copper 50 Radium 50" { crystaltype = "Crystals4";
 			dataBlock = "Crystals4";name = "jheri3";position = "55.4145 271.944 4";rotation = "0 0 1";destroyable = "True";deleteOnDestroy = "False"; locked = "0";
 		};
 		
@@ -2450,7 +2452,7 @@ instant SimGroup "MissionGroup" {
 			};
 			instant SimGroup "NEED AI false";
 			instant SimGroup "GSAY You have been teleported to see Qod!~wPortal6.wav";
-		};
+		};		
 		instant SimGroup "undercty2crypt" {
 			instant SimGroup "Input" {
 				instant Trigger "GroupTrigger1" { dataBlock = "GroupTrigger"; name = ""; position = "-4896.51 -1168.24 -148.696"; rotation = "0 -0 0"; boundingBox = "-1 -1 -2 1 1 2"; isSphere = "True"; };
@@ -2907,6 +2909,30 @@ instant SimGroup "MissionGroup" {
 			instant SimGroup "TAKE Quartz 10";
 			instant SimGroup "NSAY This portal only responds to ore. You need 10 Quartz to travel through.~wDeActivateDG.wav";
 		};
+		instant SimGroup "DigToTaint" {
+			instant SimGroup "Input" {
+				instant Trigger "GroupTrigger1" { dataBlock = "GroupTrigger"; name = ""; position = "-3603.63 2421.58 267.509"; rotation = "0 0 0"; boundingBox = "-1 -1 -1 1 1 1"; isSphere = "True"; };
+			};
+			instant SimGroup "Output" {
+				instant Marker "Marker1" { dataBlock = "PathMarker"; name = ""; position = "-379.243 -245.69 18.8275"; rotation = "0 0 0"; };
+			};
+			instant SimGroup "GSAY You step through the gate and arrive at the Tainted Sewer.~wPortal6.wav";
+			instant SimGroup "NEED Quartz 10 AI false";
+			instant SimGroup "TAKE Quartz 10";
+			instant SimGroup "NSAY This portal only responds to ore. You need 10 Quartz to travel through.~wDeActivateDG.wav";
+		};		
+		instant SimGroup "TaintToDig" {
+			instant SimGroup "Input" {
+				instant Trigger "GroupTrigger1" { dataBlock = "GroupTrigger"; name = ""; position = "-401.621 -224.302 18.3008"; rotation = "0 0 0"; boundingBox = "-1 -1 -1 1 1 1"; isSphere = "True"; };
+			};
+			instant SimGroup "Output" {
+				instant Marker "Marker1" { dataBlock = "PathMarker"; name = ""; position = "-3600.27 2415.5 267.509"; rotation = "0 0 0"; };
+			};
+			instant SimGroup "GSAY You step through the gate and arrive at the Abandoned Dig Site.~wPortal6.wav";
+			instant SimGroup "NEED Quartz 10 AI false";
+			instant SimGroup "TAKE Quartz 10";
+			instant SimGroup "NSAY This portal only responds to ore. You need 10 Quartz to travel through.~wDeActivateDG.wav";
+		};		
 	};
 	instant SimGroup "TownBots" {
 		instant SimGroup "porter1" {
@@ -3834,8 +3860,8 @@ instant SimGroup "MissionGroup" {
 			instant SimGroup "NAME Keeper of Old"; 			
 			instant SimGroup "RACE Keeper"; 
 			instant SimGroup "ITEMS CLASS Bard LVL 5000 LCK 0 Dagger 1";			
-			instant SimGroup "NEED BookOfOld 1 Club 3 BoneClub 3 SpikedBoneClub 3 SpikedClub 3 Mace 3 HammerPick 3 WarHammer 3 WarMaul 3 StoneAxe 3 MorningStar 3";
-			instant SimGroup "TAKE BookOfOld 1 Club 3 BoneClub 3 SpikedBoneClub 3 SpikedClub 3 Mace 3 HammerPick 3 WarHammer 3 WarMaul 3 StoneAxe 3 MorningStar 3";
+			instant SimGroup "NEED BookOfOld 1 Club 3 BoneClub 3 SpikedBoneClub 3 SpikedClub 3 Mace 3 Hammer 3 WarHammer 3 WarMaul 3 StoneAxe 3 MorningStar 3";
+			instant SimGroup "TAKE BookOfOld 1 Club 3 BoneClub 3 SpikedBoneClub 3 SpikedClub 3 Mace 3 Hammer 3 WarHammer 3 WarMaul 3 StoneAxe 3 MorningStar 3";
 			instant SimGroup "GIVE TitanCrusher 1";
 			instant SimGroup "SAY1 You seek to Equalize. You seek the Titan Crusher. Creten the Minotaur controls his herd with this weapon in the Palace Safeway.";
 			instant SimGroup "CUE1 weapon";

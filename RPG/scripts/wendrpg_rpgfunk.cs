@@ -2476,8 +2476,7 @@ function InitObjectives()
 
 	%num = 0;
 	Team::setObjective(0, %num++, "<jc><f8>TribesRPG: World Ender Mod [" @ $rpgver @ "]");
-	Team::setObjective(0, %num++, "\n<f2>https://tribesrpg.org/worldender/");
-	Team::setObjective(0, %num++, "\n<f2>Server Admin: DescX");
+	Team::setObjective(0, %num++, "\n<f2>" @ $Server::FileURL);
 	Team::setObjective(0, %num++, "\n        <f1>+ <f0>Use the <f2>TAB<f0> key to access your skills.");
 	Team::setObjective(0, %num++, "\n        <f1>+ <f0>You start with <f2>FAVOR<f0> which protects your items if you die.");
 	Team::setObjective(0, %num++, "\n        <f1>+ <f0>With no <f2>FAVOR<f0>, your items will be desposited in the Bank on death.");
@@ -2510,10 +2509,6 @@ function repackAlert(%clientId)
 		return;
 	if(%clientId.repack >= $latestRepack)
 		return;
-
-	%msg = "Your repack is out of date, it is recommended you update for the best experience.";
-
-	bottomPrint(%clientId,"<jc>"@%msg@"\n\n<f2>www.tribesrpg.org",25);
 }
 
 //By phantom, tribesrpg.org
@@ -2556,8 +2551,7 @@ function revertControls(%TrueClientId){
 function rpg::eyes(%TrueClientId, %id){	if(IsDead(%id))	{		Client::sendMessage(%TrueClientId, 0, "Target client is dead.");		return;	}	//revert	revertControls(%TrueClientId);	//eyes	Client::setControlObject(%TrueClientId, Client::getObserverCamera(%TrueClientId));	Observer::setOrbitObject(%TrueClientId, Client::getOwnedObject(%id), -3, -3, -3);	%TrueClientId.eyesing = %id;	%TrueClientId.currentInvSteal = "";	DisplayGetInfo(%TrueClientId, %id);	client::sendmessage(%TrueClientId, $msgWhite, "#revert to return view.");	return;}
 
 function initEscText(%clientId){	%num = -1;	remoteEval(%clientId, SetServerTextLine, %num++, "\n<f1>TribesRPG: World Ender Mod");
-	remoteEval(%clientId, SetServerTextLine, %num++, "\n<f1>https://tribesrpg.org/worldender/");
-	remoteEval(%clientId, SetServerTextLine, %num++, "\n<f1>Server Admin: <f0>DescX");
+	remoteEval(%clientId, SetServerTextLine, %num++, "\n<f1>" @ $Server::FileURL);
 	remoteEval(%clientId, SetServerTextLine, %num++, "\n        <f1>+ <f0>Talk to NPCs by pressing <f2>T or P");
 	remoteEval(%clientId, SetServerTextLine, %num++, "\n        <f1>+ <f0>Need <f2>HELP?<f0> Press <f2>TAB!");
 	remoteEval(%clientId, SetServerTextLine, %num++, "\n        <f1>+ <f0>Picked the wrong class? Send chat: <f2>#resetcharacter " @ rpg::getName(%clientId));

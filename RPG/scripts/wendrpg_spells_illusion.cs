@@ -96,6 +96,8 @@ SpellDefinition($SkillIllusionMagic, "mimic", 0, 80,
 function CastIllusionMagic(%player, %clientId, %index, %oldpos, %castPos, %castObj, %w2, %returnFlag, %skipEndCast, %isWordSmith) {
 	if(%isWordSmith)	%skillLevel = GetSkillWithBonus(%clientId, $SkillWordsmith);
 	else 				%skillLevel = GetSkillWithBonus(%clientId, $SkillIllusionMagic);
+	if(%isWordSmith == "")
+		%isWordSmith = 0;
 	
 	if($Spell::index[mimic] == %index) {
 		if(Zone::getType(fetchData(%clientId, "zone")) == "PROTECTED") {

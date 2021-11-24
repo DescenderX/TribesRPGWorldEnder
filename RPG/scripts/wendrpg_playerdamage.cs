@@ -143,7 +143,7 @@ function Player::onDamage(%this,%type,%value,%pos,%vec,%mom,%vertPos,%rweapon,%o
 			%Bash 		= Array::Get(%results, 5);
 			%Parry 		= Array::Get(%results, 6);		
 			Array::Delete(%results);
-		}
+		}		
 		if(%Parry || %Defended) {
 			%isMiss = true;
 		}
@@ -351,8 +351,9 @@ function Player::onDamage(%this,%type,%value,%pos,%vec,%mom,%vertPos,%rweapon,%o
 		}
 		
 		//_______________________________________
+		// Finally, actually do the damage.
 		// Handle death - call onKilled() and play animations
-		if(%rhp == 0 || %rhp == 1) {
+		if(%rhp >= 1) {
 			if(Player::isAiControlled(%shooterClient)) {
 				Player::setAnimation(%shooterClient, 43);
 				PlaySound(RandomRaceSound(fetchData(%shooterClient, "RACE"), Taunt), %shooterClientPos);
@@ -367,11 +368,7 @@ function Player::onDamage(%this,%type,%value,%pos,%vec,%mom,%vertPos,%rweapon,%o
 			%rhp = refreshHP(%damagedClient, (%value / $TribesDamageToNumericDamage));
 			Game::clientKilled(%clientId, %shooterClient);
 		}
-		
-		
-		//___________________
-		// Finally, actually do the damage.
-		if(%rhp != 0) {
+		else if(%rhp != 0) {
 			%rhp = refreshHP(%damagedClient, (%value / $TribesDamageToNumericDamage));
 		}
 		return;

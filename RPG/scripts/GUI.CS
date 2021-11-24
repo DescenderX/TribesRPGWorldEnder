@@ -79,11 +79,7 @@ function QuickStart(%noautojoin)
 	}
 	else if (!%noautojoin && $joinWorlds == 1)
 	{
-		$joiningWorlds = True;
-		$joinWorlds = 2;
-		$Server::Address = "game.tribesrpg.org:28001";
-		//IRCLogin::AutoConnect();
-		JoinGame();
+		GuiLoadContentCtrl(MainWindow, "gui\\PlayerSetup.gui");
 	}
 	else if ($pref::PlayGameMode == "")
 		GuiLoadContentCtrl(MainWindow, "gui\\Connect.gui");

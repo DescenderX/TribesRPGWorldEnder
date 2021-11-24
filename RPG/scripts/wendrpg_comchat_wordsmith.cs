@@ -108,6 +108,10 @@ function processWordsmith(%clientId, %team, %message, %senderName, %w1, %cropped
 				Client::sendMessage(%TrueClientId, $MsgRed, "Reciting the \"" @ %whatSpell @ "\" Combat Art requires more Energy than you have.");
 				return %processed;
 			}
+			if(fetchData(%TrueClientId, "SpellCastStep") != "" && fetchData(%TrueClientId, "SpellRecovTime") > 0) {
+				Client::sendMessage(%TrueClientId, $MsgRed, "You are recovering and cannot #inscribe yet.");
+				return %processed;
+			}
 			%idiomName = $Spell::keyword[%spellIndex] @ "idiom";
 			%cost = floor($ItemCost[%idiomName]);
 			%restrict = rpg::GetAdjustedSkillRestriction(%clientId, %idiomName);

@@ -486,8 +486,7 @@ function processMenupickclass(%clientId, %opt)
 		AddSkillPoint(%clientId, %i, $autoStartupSP);
 
 	centerprint(%clientId, 	"<f1>TribesRPG: World Ender\n" @ 
-							"<f2>https://tribesrpg.org/worldender/\n" @ 
-							"<f1>Server Admin: <f0>DescX\n" @
+							"<f2>" @ $Server::FileURL @ "\n" @ 
 							"<f0>Need <f2>HELP?<f0> Press <f2>TAB!<f0>\n" @
 							"Picked the wrong class? Send chat: <f2>#resetcharacter " @ rpg::getName(%clientId) @ "\n\n<f0>" @ 
 							$loginMsg, 20);

@@ -97,6 +97,8 @@ SpellDefinition($SkillCombatArts, "atkecho5", 74, 50,
 function CastCombatArts(%player, %clientId, %index, %oldpos, %castPos, %castObj, %w2, %returnFlag, %skipEndCast, %isWordSmith) {
 	if(%isWordSmith)	%skillLevel = GetSkillWithBonus(%clientId, $SkillWordsmith);
 	else 				%skillLevel = GetSkillWithBonus(%clientId, $SkillCombatArts);
+	if(%isWordSmith == "")
+		%isWordSmith = 0;
 	
 	if(isOneOf(%index, $Spell::index[speed1],$Spell::index[speed2],$Spell::index[speed3],$Spell::index[speed4],$Spell::index[speed5])) {
 		RefreshWeight(%clientId);

@@ -108,6 +108,8 @@ SpellDefinition($SkillDistortionMagic, "remort", 0, 1,
 function CastDistortionMagic(%player, %clientId, %index, %oldpos, %castPos, %castObj, %w2, %returnFlag, %skipEndCast, %isWordSmith) {
 	if(%isWordSmith)	%skillLevel = GetSkillWithBonus(%clientId, $SkillWordsmith);
 	else 				%skillLevel = GetSkillWithBonus(%clientId, $SkillDistortionMagic);
+	if(%isWordSmith == "")
+		%isWordSmith = 0;
 	
 	// Teleport to rough area
 	if(!rpg::IsTheWorldEnding() && isOneOf(%index,$Spell::index[teleport],$Spell::index[advteleport],$Spell::index[massteleport])) {

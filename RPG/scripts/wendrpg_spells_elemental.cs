@@ -7,12 +7,12 @@
 //		Petrify is the only non-damage spell.
 //________________________________________________________________________________________________
 SpellDefinition($SkillElementalMagic, "stone", 5, 5, 
-				"Stone", "Teleports two stones to the target and launches them at close range.", 18, 80, 2, 
+				"Stone", "Teleports two stones to the target and launches them at close range.", 22, 80, 3, 
 				SoundSpinUp, SoundFlierCrash, 50, 1, 2, 0, False, False,
 				$TargetDamageSpell, 0, 2.1, "SpellFXstone");
 
 SpellDefinition($SkillElementalMagic, "ice", 10, 5, 
-				"Ice", "Generates a damaging spike of ice on the target.", 50, 150, 3, 
+				"Ice", "Generates a damaging spike of ice on the target.", 55, 150, 4, 
 				ActivateAS, NoSound, 2, 2, 2, 0, False, False,
 				$TargetDamageSpell, 0, 1, "SpellFXicespike");				
 
@@ -91,7 +91,9 @@ SpellDefinition($SkillElementalMagic, "radstorm", 70, 200,
 //________________________________________________________________________________________________
 function CastElementalMagic(%player, %clientId, %index, %oldpos, %castPos, %castObj, %w2, %returnFlag, %skipEndCast, %isWordSmith) {
 	if(%isWordSmith)	%skillLevel = GetSkillWithBonus(%clientId, $SkillWordsmith);
-	else 				%skillLevel = GetSkillWithBonus(%clientId, $SkillElementalMagic);
+	else 				%skillLevel = GetSkillWithBonus(%clientId, $SkillElementalMagic);	
+	if(%isWordSmith == "")
+		%isWordSmith = 0;
 	
 	if(%castPos == "") {
 		if(!%skipEndCast)	return EndCast(%clientid,%index,%castpos,%returnflag);

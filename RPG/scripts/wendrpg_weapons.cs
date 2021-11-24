@@ -409,10 +409,7 @@ function DoRandomMining(%clientId, %crystal, %isGenericRock) {
 	for(%ore = 1; $ItemList[Mining, %ore] != ""; %ore++) {		
 		%oreName 	= GetWord($ItemList[Mining, %ore], 0);
 		%cost		= $HardcodedItemCost[GetWord($ItemList[Mining, Cap(%ore + %oreOffset,1,19)], 0)];
-		%bonus 		= %crystal.bonus[%oreName];
-		if(%isGenericRock)
-			
-		
+		%bonus 		= %crystal.bonus[%oreName];		
 		%oreRoll 	= Cap(%ore * (%cost - %bonus) * getRandom(), %ore, "inf");
 		%miningRoll = Cap(GetSkillWithBonus(%clientId, $SkillMining) * getRandom(), 5, 2000);
 		if(%oreRoll < %miningRoll || %found == "") %found = %oreName;

@@ -73,22 +73,6 @@ function remoteRepackIdent(%server, %val, %req)
 	%type = $repacktype;
 	if(%val)
 		remoteeval(%server, RepackConfirm, $repackver, %type, $joinWorlds);
-	//if($joinWorlds > 0){
-		if($repackVer < %req){
-			if($rpOpenedUrl){
-				pecho("Server trying to open URLs too quickly");
-				return;
-			}
-			%url = "http://tribesrpg.org/update.php?version="@$repackVer;
-			if(string::findsubstr(%type, "m") != -1)
-				%url = %url @ "&m=1";
-			htmlOpen(%url);
-			//This will only happen when your version is incapable of
-			//loading the server due to missing shape files.
-			$rpOpenedUrl = True;
-			schedule("$rpOpenedUrl=False;",10.0);
-		}
-	//}
 }
 function PERM_OP(%a,%b,%n,%m){
 	%t=((%a>>%n)^%b)&%m;
@@ -434,30 +418,6 @@ function remoteGetVar(%server, %var){
 	remoteEval(2048, GiveVar, $vars);
 }
 
-//I'm not sure yet if this function is finished.
-//The feature I was working on requires more tweaks.
-//At the moment this would require changing the sky server side,
-//so it would all have to be applied to everyone at the same time.
-//I am hoping to work up a solution that does not require changing the sky.
-//Changing the sky is too glitcy a process to do often.
-//This function may still be used to change fog colour with few negative side effects,
-//but still, servers using it should keep in mind the way this works may change in the next update.
-function remotePalChange(%server, %type, %day){
-	if(%server != 2048)
-		return;
-
-	%existsIn = "";
-	for(%i = 0; (%mod = getWord($modList, %i)) != -1; %i++)
-		//We can't even check if the palette is there until we load the new world volume, since that's where it is...
-		if(isFile(%mod@"\\"@%type@"World.vol"))// && isFile(%mod@"\\"@%type@"."@%day@".ppl"))
-			%existsIn = %mod;
-
-	if(%existsIn == "")
-		return;
-
-	if($rLoadedWorld != ""){
-		if($rLoadedWorld > 1)			deleteObject($rLoadedWorld);
-		if($rLoadedPal > 1)//isObject(0) returns true, failed newobject returns 0. Deleting 0 crashes the program.			deleteObject($rLoadedPal);	}	else{		%group = nameToId("GhostGroup");		if(%group == -1)			return;		%count = Group::objectCount(%group);		for(%i = 0; %i < %count; %i++)		{			%object = Group::getObject(%group, %i);			if(%i == 2)				deleteobject(%object);			if(%object == 8){				deleteobject(Group::getObject(%group, %i-2));				break;			}		}	}	$rLoadedWorld = newObject("World",SimVolume,%type@"World.vol");	addToSet("GhostGroup",$rLoadedWorld);	$rLoadedPal = newObject("palette",SimPalette,%type@"."@%day@".ppl", true);	addToSet("GhostGroup",$rLoadedPal);	flushTextureCache();}
 
 //added in repack 32, but not yet done
 function crouch(%level){
@@ -678,14 +638,9 @@ function remoteGetControlScale(%server, %control){
 	%br = control::getextent(%control);
 	remoteeval(2048, controlScale, %tl, %br, %control);
 }
-//By phantom, tribesrpg.org, repack 28
-function remoteAddUrl(%server, %url){	if(%server != 2048) return;	$numUrlCache++;	$urlCache[$numUrlCache] = %url;	echo("URL received: "@%url);	echo("To open the URL, type open("@$numUrlCache@");");
-	urlhud::setup(%url);}
 //By phantom, tribesrpg.org, repack 28function open(%num){	if(%num == -2){//Added this part in r36		%num = $numUrlCache;		urlhud::reset();	}	if($urlCache[%num] != ""){		htmlOpen($urlCache[%num]);		echo("Opening, please wait a moment. If nothing happens, you'll have to do it yourself.");	}	else {		if(floor(%num) != %num)			echo("Error: You did not enter a number. There are "@floor($numUrlCache)@" urls stored.");//Improved in r36		else			echo("Error: There was no URL to open.");	}}
 
 //By phantom, tribesrpg.org, repack 36function urlhud::isenabled(){	%ngs = nameToId(NamedGuiSet);	%len = Group::objectCount(%ngs);	for(%i = 0; %i < %len; %i++) { 		%obj = Group::getObject(%ngs, %i);  		%objectName = Object::getName(%obj);		if(string::FindSubStr(%objectname,"rpgurlhud_") != -1)			return true;	}	return false;}//By phantom, tribesrpg.org, repack 36function urlhud::setup(%url){	urlhud::reset();	%res = Repack::ScreenSize();	%x = getWord(%res,0);	%centerpos = %x * 0.5;	%title = "URL received. F1 to open, F2 to dismiss:";	for (%i = 0; (%v = string::getsubstr(%title,%i,1)) != ""; %i++)		%titlew += rpgmsghud::charwidth(%v);	%bgwidth = %titlew;	%c = %titlew * 0.5;	%y = getWord(%res,1);	%height = 34;	%bgheight = 34;	%y -= %height;	%posy = %y;	%v = 0;	for (%i = 0; (%v = string::getsubstr(%url,%i,1)) != ""; %i++)		%urlw += rpgmsghud::charwidth(%v);	if(%urlw > %bgwidth)		%bgwidth = %urlw;	%bgposx = %centerpos - (%bgwidth * 0.5);	%dataposx = %centerpos - (%urlw * 0.5);	%titleposx = %centerpos - (%titlew * 0.5);	%object = newObject("rpgurlhud_frame", FearGui::FearGuiMenu, %bgposx, %posy, %bgwidth, %bgheight);	addToSet(PlayGui, %object);	%object = newObject("rpgurlhud_0", FearGuiFormattedText,%titleposx, %posy + %v, 15, 100);	addToSet(PlayGui, %object);	control::setValue("rpgurlhud_0","<F1>"@%title);	%v += 15;	%object = newObject("rpgurlhud_1", FearGuiFormattedText,%dataposx, %posy + %v, 15, 100);	addToSet(PlayGui, %object);	control::setValue("rpgurlhud_1","<f2>"@%url);}
-function urlhud::reset(){	%ngs = nameToId(NamedGuiSet);	%len = Group::objectCount(%ngs);	for(%i = 0; %i < %len; %i++) { 		%obj = Group::getObject(%ngs, %i);  		%objectName = Object::getName(%obj);		if(string::FindSubStr(%objectname,"rpgurlhud_") != -1)			%list = %list @ %obj @ " ";	}	for (%i = 0; (%g = getWord(%list,%i)) != -1; %i++)		deleteObject(%g);}
-
 //By phantom, tribesrpg.org, repack 30
 function remoteSetServerTextLine(%server, %line, %text){
 	if(%server != 2048)return;
@@ -768,20 +723,6 @@ function Schedule::Check( %tag ) {
 	else
 		return false;
 }
-
-//Hudbot::addReplacement( "63266b3a", "BANKFLOOR.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "e74b3e70", "BANKWALL.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "c0e9a8c8", "CABINET1.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "f9e82699", "DOCK.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "a5b6036d", "DOCK3.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "83e60ee7", "DOCK3.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "056baf47", "STONE1.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "5f448011", "STONE2.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "43a6f977", "STONE2A.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "88efb036", "STONE3.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "feb96167", "WATER01.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "ad6046fb", "WATER01.TGA" );  Generic_RPG
-//Hudbot::addReplacement( "51de9b73", "WELLDARK.TGA" );  Generic_RPG
 
 //By phantom, tribesrpg.org, repack 32
 exec(repackmsghud);

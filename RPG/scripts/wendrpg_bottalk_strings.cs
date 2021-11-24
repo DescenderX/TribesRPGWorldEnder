@@ -1170,7 +1170,7 @@ $BotInfoChat["GeostrologyGM", "hello", 2] = "resonance";
 	$BotInfoChat["GeostrologyGM", "transfer", 5] = "water";
 	$BotInfoChat["GeostrologyGM", "transfer", 6] = "hello";
 	
-		$BotInfoChat["GeostrologyGM", EVAL, "obsidian"] = "rpg::HouseFetchQuestAwards ,\"Obsidian\", \"150\", \"transferring\"";
+		$BotInfoChat["GeostrologyGM", EVAL, "obsidian"] = "rpg::HouseFetchQuestAwards ,\"Obsidian\", \"500\", \"transferring\"";
 		$BotInfoChat["GeostrologyGM", SAY, "obsidian"] = "These are great Obsidian samples! If we ever learn how to inscribe anything on this ore, you'll be the first to know.";
 		$BotInfoChat["GeostrologyGM", "obsidian", 0] = "transfer";
 			$BotInfoChat["GeostrologyGM", SAY, "noObsidian"] = "Obsidian comes from Golems. They're wildly tough inanimates held together with magic. There's a portal across from Fort Ethren. Be careful...";
@@ -1182,19 +1182,19 @@ $BotInfoChat["GeostrologyGM", "hello", 2] = "resonance";
 			$BotInfoChat["GeostrologyGM", SAY, "noDragonScale"] = "Hmm, those definitely aren't Dragon Scales. You should probably get those looked at... by a Cleric?";
 			$BotInfoChat["GeostrologyGM", "noDragonScale", 0] = "transfer";
 			
-		$BotInfoChat["GeostrologyGM", EVAL, "sulfur"] = "rpg::HouseFetchQuestAwards ,\"Sulfur\", \"25\", \"transferring\"";
+		$BotInfoChat["GeostrologyGM", EVAL, "sulfur"] = "rpg::HouseFetchQuestAwards ,\"Sulfur\", \"35\", \"transferring\"";
 		$BotInfoChat["GeostrologyGM", SAY, "sulfur"] = "Oh, that smell! I wish we didn't actually need Sulfur to energize anything. Just... awful. But thank you!";
 		$BotInfoChat["GeostrologyGM", "sulfur", 0] = "transfer";
 			$BotInfoChat["GeostrologyGM", SAY, "noSulfur"] = "If your nostrils feel like they're full of salt, you found Sulfur. Churls eat the stuff. Yeah, really. So, check with them?...";
 			$BotInfoChat["GeostrologyGM", "noSulfur", 0] = "transfer";
 			
-		$BotInfoChat["GeostrologyGM", EVAL, "cobalt"] = "rpg::HouseFetchQuestAwards ,\"Cobalt\", \"50\", \"transferring\"";
+		$BotInfoChat["GeostrologyGM", EVAL, "cobalt"] = "rpg::HouseFetchQuestAwards ,\"Cobalt\", \"250\", \"transferring\"";
 		$BotInfoChat["GeostrologyGM", SAY, "cobalt"] = "You're alive, and you have Cobalt? I'm not going to ask what you've been through. Thankyou.";
 		$BotInfoChat["GeostrologyGM", "cobalt", 0] = "transfer";
 			$BotInfoChat["GeostrologyGM", SAY, "noCobalt"] = "This metal is incredible! The trouble is, the only way we can get it is by shattering Cragspawn in Overville.";
 			$BotInfoChat["GeostrologyGM", "noCobalt", 0] = "transfer";
 			
-		$BotInfoChat["GeostrologyGM", EVAL, "mercury"] = "rpg::HouseFetchQuestAwards ,\"Mercury\", \"50\", \"transferring\"";
+		$BotInfoChat["GeostrologyGM", EVAL, "mercury"] = "rpg::HouseFetchQuestAwards ,\"Mercury\", \"350\", \"transferring\"";
 		$BotInfoChat["GeostrologyGM", SAY, "mercury"] = "Hey, whoa! Don't get that stuff on me! I appreciate the Mercury, but please, handle it more carefully?";
 		$BotInfoChat["GeostrologyGM", "mercury", 0] = "transfer";
 			$BotInfoChat["GeostrologyGM", SAY, "noMercury"] = "The Ancients across the bridge use Mercury as a lubricant. It's always rich with other trace elements.";

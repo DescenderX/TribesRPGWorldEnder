@@ -177,6 +177,8 @@ SpellDefinition($SkillRestorationMagic, "massfullheal", 9999, 50,
 function CastRestorationMagic(%player, %clientId, %index, %oldpos, %castPos, %castObj, %w2, %returnFlag, %skipEndCast, %isWordSmith) {
 	if(%isWordSmith)	%skillLevel = GetSkillWithBonus(%clientId, $SkillWordsmith);
 	else 				%skillLevel = GetSkillWithBonus(%clientId, $SkillRestorationMagic);
+	if(%isWordSmith == "")
+		%isWordSmith = 0;
 	
 	%id = Player::getClient(%castObj);
 	if(%castObj != "" && %id > 0 && (%id != %clientId || %index == $Spell::index[masssmite])) {
