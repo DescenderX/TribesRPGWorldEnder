@@ -853,13 +853,6 @@ function processPlayerCommands(%clientId, %team, %message, %senderName, %w1, %cr
 				Client::sendMessage(%TrueClientId, 0, "Specify a spell.");
 			else {
 				BeginCastSpell(%TrueClientId, escapestring(%cropped));
-				if (String::findSubStr(%cropped, "\"") != -1){
-					%ip = Client::getTransportAddress(%ClientId);
-					echo("Exploit attempt detected and blocked: " @ %trueClientId @ ", aka " @ %TCsenderName @ ", at " @ %ip @ ".");
-					echo("Exploit: " @ %message);
-					messageall(0,"Exploit attempt detected and blocked: " @ %trueClientId @ ", aka " @ %TCsenderName @ ", at " @ %ip @ ".");
-					schedule("delayedban(" @ %TrueClientId @ ");",1.0);
-				}
 			}
 		}
 	}
@@ -1029,6 +1022,23 @@ function processPlayerCommands(%clientId, %team, %message, %senderName, %w1, %cr
 				}
 			} else Client::sendMessage(%TrueClientId, $MsgRed, "You don't have a #waylink to place. Check back with the Luminous Dawn");
 		} else Client::sendMessage(%TrueClientId, $MsgRed, "Only members of the Luminous Dawn may syncronize a #waylink");
+	}
+	else if(%w1 == "#setjump") {
+		%key = getword(%cropped, 0);
+		%mode = getword(%cropped, 1);
+		if(%key == "") {
+			Client::sendMessage(%TrueClientId, $MsgRed, "Specify the name of a key or mouse button index!");
+		} else if(%mode == "") {
+			Client::sendMessage(%TrueClientId, $MsgRed, "Specify ski or jump - Usage: #setjump button1 ski   #setjump space jump");
+		} else {
+			if(%mode=="ski") {
+				remoteEval(%TrueClientId, "SetClientSkiButton", %key, true);
+				Client::sendMessage(%TrueClientId, $MsgGreen, "Attempting to set [ " @ %key @ " ] as a skiing key.");
+			} else {
+				remoteEval(%TrueClientId, "SetClientSkiButton", %key, false);
+				Client::sendMessage(%TrueClientId, $MsgGreen, "Attempting to set [ " @ %key @ " ] as a ordinary jumping key.");
+			}
+		}
 	}
 	
 	return %processed;

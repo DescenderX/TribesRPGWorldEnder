@@ -236,7 +236,12 @@ function setzoneflags(%object, %z)
 			}
 			if($Zone::Music[%zoneflag, 1] != "")
 			{
-				if(%clientId.MusicTicksLeft < 1)
+				if(fetchData(%clientId,"disableMusic") == true) 
+				{
+					%clientId.MusicTicksLeft = 0;
+					%clientId.currentMusic = "";
+				}
+				else if(%clientId.MusicTicksLeft < 1)
 				{
 					for(%m = 1; $Zone::Music[%zoneflag, %m] != ""; %m++){}
 					%m--;

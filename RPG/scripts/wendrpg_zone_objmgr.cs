@@ -1044,7 +1044,8 @@ function rpg::DefineManagedZoneObjects() {
 		rpg::DefineManagedObject(%zone, "StaticShape", "in3", "SpellFXdomesmall", "-3745.8 989.5 277", "0 0 0");
 		rpg::DefineManagedObject(%zone, "InteriorShape", "n4 rockmine", "lrock1.2.dis", "-3736.51 991.865 271", "0 0 0");
 		rpg::DefineManagedObject(%zone, "StaticShape", "in5", "DTS_rockingchair", "-3752.35 991.832 271", "0 0 0");
-
+		rpg::DefineManagedObject(%zone, "InteriorShape", "stairhelp", "pstone_wstairs_l.dis", "-3585.52 1751.75 329.16", "0 0 3.1");
+		rpg::DefineManagedObject(%zone, "InteriorShape", "b1", "pstone_base_m.dis", "-3605.39999999999 1752.58999999999 340.967999999999", "0 0 0");
 
 	%zone = "Jherigo Pass";
 	%zone = rpg::CreateManagedObjectList(%zone);

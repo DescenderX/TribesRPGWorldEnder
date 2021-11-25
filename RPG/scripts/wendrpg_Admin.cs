@@ -394,7 +394,7 @@ function Game::menuRequest(%clientId)
 		{
 			%curItem = -1;			
 			if(!IsDead(%clientId)){
-				Client::addMenuItem(%clientId, "------------------------------" , "clearmessage");				
+				Client::addMenuItem(%clientId, "----------clear messages---------", "clearmessage");				
 				Client::addMenuItem(%clientId, "vView Stats & Tasks" , "viewstats");				
 				Client::addMenuItem(%clientId, "kSkill Points" , "sp");
 				%fvr = fetchData(%clientId, "FAVOR");
@@ -451,6 +451,11 @@ function processMenuOptions(%clientId, %option)
 			Client::addMenuItem(%clientId, %curItem++ @ "Turn ignore global OFF" , "gignoreoff");
 		else
 			Client::addMenuItem(%clientId, %curItem++ @ "Turn ignore global ON" , "gignoreon");
+		
+		if(fetchData(%clientId, "disableMusic"))
+			Client::addMenuItem(%clientId, %curItem++ @ "Music is OFF. Turn it ON?" , "musicon");
+		else
+			Client::addMenuItem(%clientId, %curItem++ @ "Music is ON. Turn it OFF?" , "musicoff");
 
 		Client::addMenuItem(%clientId, %curItem++ @ "Battle message config..." , "battmsg");
 		Client::addMenuItem(%clientId, "bBack" , "done");
@@ -803,10 +808,13 @@ function admin::hasPermissionToMod(%client, %victim){
 }
 
 function rpg::CreateHelpMenuItems(%clientId, %curItem) {
-	Client::addMenuItem(%clientId, "---------------------------------", "help");
+	Client::addMenuItem(%clientId, "----------clear messages---------", "help");
+	Client::addMenuItem(%clientId, %curItem++ @ "Skill Information pg 1" , "skillsinfo1");
+	Client::addMenuItem(%clientId, %curItem++ @ "Skill Information pg 2" , "skillsinfo2");
 	Client::addMenuItem(%clientId, %curItem++ @ "Where to go" , "wheretogo");
-	Client::addMenuItem(%clientId, %curItem++ @ "Leveling up" , "levels");
-	Client::addMenuItem(%clientId, %curItem++ @ "Tips & Commands" , "tips");
+	Client::addMenuItem(%clientId, %curItem++ @ "Leveling up" , "levels");	
+	Client::addMenuItem(%clientId, %curItem++ @ "Enable Skiing" , "howski");
+	Client::addMenuItem(%clientId, %curItem++ @ "Tips & Commands" , "tips");	
 	Client::addMenuItem(%clientId, %curItem++ @ "Using #skills" , "skills");
 	Client::addMenuItem(%clientId, %curItem++ @ "Casting spells" , "spells");
 	Client::addMenuItem(%clientId, "[--------------------------------", "help");
@@ -814,15 +822,14 @@ function rpg::CreateHelpMenuItems(%clientId, %curItem) {
 	Client::addMenuItem(%clientId, "wWordsmith" , "wordsmith");
 	Client::addMenuItem(%clientId, "sSurvival" , "survival");
 	Client::addMenuItem(%clientId, "]--------------------------------", "help");
-	
 	Client::addMenuItem(%clientId, "cCombat Arts" , "combatarts");
 	Client::addMenuItem(%clientId, "dDistortion Magic" , "distortion");
 	Client::addMenuItem(%clientId, "eElemental Magic" , "elemental");
 	Client::addMenuItem(%clientId, "iIllusion Magic" , "illusion");
 	Client::addMenuItem(%clientId, "rRestoration Magic" , "restoration");
 	Client::addMenuItem(%clientId, "|--------------------------------", "help");
-	Client::addMenuItem(%clientId, %curItem++ @ "PROTECTED Zones" , "zonesp");
-	Client::addMenuItem(%clientId, %curItem++ @ "DUNGEON Zones" , "zonesd");
+	Client::addMenuItem(%clientId, "pPROTECTED Zones" , "zonesp");
+	Client::addMenuItem(%clientId, "uDUNGEON Zones" , "zonesd");
 	
 	return %curItem;
 }
@@ -892,6 +899,26 @@ function ProcessMenuhelp(%clientId, %option, %sendMessageWithoutMenu) {
 		%a[%tmp++] = "<f1>IMPORTANT SKILLS: <f0>" @ %skills @ "\n";
 		%a[%tmp++] = "<f1>SUGGESTED HOUSE TO SEEK: <f0>" @ %faction @ "\n";
 		%a[%tmp++] = "<f2>" @ %tips @ "";
+	}
+	else if(%opt == "skillsinfo1") 
+	{
+		%a[%tmp++] = "<f1>SKILL INFORMATION<f0>\n\n";
+		for(%x=1; %x<=11; %x++) {
+			%a[%tmp++] = "<f2>" @ $SkillDesc[%x] @ "<f0>\n" @ $SkillMiscInfo[%x] @ "\n\n";
+		}
+	}
+	else if(%opt == "skillsinfo2") 
+	{
+		%a[%tmp++] = "<f1>SKILL INFORMATION<f0>\n\n";
+		for(%x=12; $SkillMiscInfo[%x] != ""; %x++) {
+			%a[%tmp++] = "<f2>" @ $SkillDesc[%x] @ "<f0>\n" @ $SkillMiscInfo[%x] @ "\n\n";
+		}
+	}
+	else if(%opt == "howski")
+	{
+		%a[%tmp++] = "<f1>Enable Skiing<f0>\n\nSend chat:  #setjump [keyname] [ski | jump]. Examples:\nMake spacebar ski: #setjump space ski\nMake right-mouse ordinary jump: #setjump button1 jump\n\n";
+		%a[%tmp++] = "<f1>Doesn't Work?<f0>\n\nDownload the ski addon and place it in the RPG\\scripts folder.\n";
+		%a[%tmp++] = "https://github.com/DescenderX/TribesRPGWorldEnder/blob/master/RPG/scripts/rpg.cs";
 	}
 	else if(%opt == "skills")
 	{
@@ -1168,7 +1195,6 @@ function processMenusettings(%clientId, %option)
 
 	if(%opt == "defaulttalk")
 	{
-
 		Client::buildMenu(%clientId, "Default Talk", "deftalk", true);
 		%defaulttalks[1] = "#group";
 		%defaulttalks[2] = "#global";
@@ -1183,6 +1209,16 @@ function processMenusettings(%clientId, %option)
 	else if(%opt == "gignoreoff")
 	{
 		storeData(%clientId, "ignoreGlobal", "");
+	}
+	else if(%opt == "musicon")
+	{
+		storeData(%clientId, "disableMusic", "");
+		rpg::longprint(%clientId, "Music [ ON ] - Music will start on the next zone check.", 1, 5);
+	}
+	else if(%opt == "musicoff")
+	{
+		storeData(%clientId, "disableMusic", true);
+		rpg::longprint(%clientId, "Music [ OFF ] - Music will stop after the current loop ends.", 1, 5);
 	}
 	else if(%opt == "battmsg")
 	{

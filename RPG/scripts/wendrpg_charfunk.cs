@@ -198,6 +198,8 @@ function SaveCharacter(%clientId, %silent)
 	$CharacterSaveData[0, 34] = fetchData(%clientId, "LoginMessage");
 	$CharacterSaveData[0, 35] = fetchData(%clientId, "CyclesSurvived");
 	$CharacterSaveData[0, 36] = fetchData(%clientId, "EqualizerLaunch");
+	$CharacterSaveData[0, 37] = fetchData(%clientId, "disableMusic");
+	
 	
 	$CharacterSaveData[10, 0] = $TheMandateDelivery[%name];
 	if($TheMandateDeliveryTarget[%name] != "")
@@ -393,7 +395,7 @@ function LoadCharacter(%clientId, %forceLoadByName)
 			storeData(%clientId, "LoginMessage", $CharacterSaveData[0, 34]);
 			storeData(%clientId, "CyclesSurvived", $CharacterSaveData[0, 35]);
 			storeData(%clientId, "EqualizerLaunch", $CharacterSaveData[0, 36]);
-
+			storeData(%clientId, "disableMusic", $CharacterSaveData[0, 37]);
 
 			$numMessage[%clientId, 1] = $CharacterSaveData[7, 1];
 			$numMessage[%clientId, 2] = $CharacterSaveData[7, 2];

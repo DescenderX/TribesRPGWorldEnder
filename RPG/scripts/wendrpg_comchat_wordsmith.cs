@@ -52,12 +52,11 @@ function processWordsmith(%clientId, %team, %message, %senderName, %w1, %cropped
 					if(!%cl.muted[%TrueClientId] && %cl != %TrueClientId && !fetchData(%cl, "ignoreGlobal")) {
 						if(%cl.alttext)	Client::sendMessage(%cl, $MsgGreen, string::translate2("[G] ") @ %TCsenderName @ " - " @ %cropped);
 						else 			Client::sendMessage(%cl, $MsgGreen, "[G] " @ %TCsenderName @ " - " @ %cropped);
-					}
-					if(%TrueClientId.alttext)	Client::sendMessage(%TrueClientId, $MsgGreen, string::translate2("[G] ") @ %cropped);
-					else						Client::sendMessage(%TrueClientId, $MsgGreen, "[G] " @ %cropped);
-					
+					}					
 					UseSkill(%TrueClientId, $SkillWordsmith, False, True);
 				}
+				if(%TrueClientId.alttext)	Client::sendMessage(%TrueClientId, $MsgGreen, string::translate2("[G] ") @ %cropped);
+				else						Client::sendMessage(%TrueClientId, $MsgGreen, "[G] " @ %cropped);
 			} else Client::sendMessage(%TrueClientId, $MsgRed, "You can't send a Global message when ignoring other Global messages.");	
 		} else Client::sendMessage(%TrueClientId, $MsgRed, "You skill is too low to send #global messages.");	
 	}

@@ -274,14 +274,6 @@ function Client::leaveGame(%clientId)
 	//Using a schedule prevents us from crashing because then it doesn't
 	//happen while doing other operations on the client.
 	return true;}
-
-// Part of phantom's hack block thingies
-function delayedban(%id)
-{
-	%hisip = Client::getTransportAddress(%id);
-	newKick(%id, "2 hour ban for bad behaviour.");
-	BanList::add(%hisip, 7200);
-}
 function exploitBan(%id, %type, %period){	%hisip = Client::getTransportAddress(%id);	%banmsg = "You have been temporarily auto-banned for "@%period@" minutes. Reason: "@%type;
 	%ret = newKick(%id,%banmsg, True);
 	if(%ret){

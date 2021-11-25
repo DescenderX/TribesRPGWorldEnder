@@ -91,7 +91,7 @@ $Server::XLMasterN4 = "IP:66.39.167.52:28000";
 $Server::XLMasterN5 = "IP:173.27.47.107:28000";
 $Server::XLMasterN6 = "IP:216.249.100.66:28000";
 $Server::XLMasterN7 = "IP:209.223.236.114:28000";
-$rpgver = "0.4";
+$rpgver = "0.5";
 
 
 function dbecho(%mode, %s){
@@ -667,3 +667,5 @@ function RoundToFirstDecimal(%c)
 function safeDelete(%id, %caller, %instant){	if(%id < 700){		pecho("Failure 1 to safeDelete object "@%id@", called by "@%caller);		return false;	}	if(!isObject(%id)){		pecho("Failure 2 to safeDelete object "@%id@", called by "@%caller);		return false;	}	if(%instant)		deleteObject(%id);	else		schedule("finalDelete("@%id@",\"escapeString(%caller)\");",0.01,%id);	return true;}
 function finalDelete(%id, %caller){	if(!isObject(%id)){		pecho("Failure 2 to finalDelete object "@%id@", called by "@%caller);		return false;	}	deleteObject(%id);	return true;}
 // for player rotations only (around z axis) -plasmatic function rotateVector(%vec,%rot){	%pi = 3.1416;	%rot3= getWord(%rot,2);	for(%i = 0; %rot3 >= %pi*2; %i++) %rot3 = %rot3 - %pi*2;	if (%rot3 > %pi) %rot3 = %rot3 - %pi*2;	%vec1= getWord(%vec,0);	%vec2= getWord(%vec,1);	%vc = %vec2;	%vec3= getWord(%vec,2); 	%ray = %vec1;		%vec1 = %ray*cos(%rot3);	%vec2 = %ray*sin(%rot3);	%vec = %vec1 @" "@ %vec2 @" "@ %vec3;	%vec = Vector::add(%vec,Vector::getFromRot(%rot,%vc,0));	return %vec;}
+
+exec(wendrpg_ski_addon);

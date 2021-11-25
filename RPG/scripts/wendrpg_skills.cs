@@ -87,6 +87,29 @@ $SkillDesc[20] = "Vitality";			// increase by eating stuff
 $SkillDesc[21] = "Energy";				// increase by eating stuff
 $SkillDesc[22] = "Luck";				// manual increase only, needs SP
 
+$SkillMiscInfo[$SkillSlashing] = "Wield swords and parry physical attacks automatically! The damage you deal with Slashing weapons is governed by Strength.";
+$SkillMiscInfo[$SkillPiercing] = "Sharp things - both throwable and melee. Backstabbing is always active - get behind your targets. Damage is governed by Focus.";
+$SkillMiscInfo[$SkillBludgeoning] = "Automatically bash your targets around with blunt clubs and hammers! Damage is governed by Strength.";
+$SkillMiscInfo[$SkillArchery] = "Archers can make use of bows, crossbows and dart weapons with a variety of basic, metal and poison projectiles. Damage is governed by Endurance.";
+$SkillMiscInfo[$SkillWands] = "Use magical devices to deal damage from far away. These weapons don't require mana or projectiles but operate strangely. Damage is governed by Willpower.";
+$SkillMiscInfo[$SkillCombatArts] = "Spells for fighters! This spell tree allows for charging, taunting, multiple attacks, movement speed boosts and more.";
+$SkillMiscInfo[$SkillElementalMagic] = "Elemental spells deal heavy direct damage and cripple opponents. The most advanced mages will benefit from a high Focus to reduce casting time of their storms.";
+$SkillMiscInfo[$SkillRestorationMagic] = "Heal, prevent death, reduce damage, SMITE targets and tap mana! Restoration magic is a complex spell tree with versatile spells.";
+$SkillMiscInfo[$SkillDistortionMagic] = "Distortion spells allow for short and long range teleportation, rifts, flight, and a variety of other spells.";
+$SkillMiscInfo[$SkillIllusionMagic] = "Create barriers and false weight, summon Maidens, light up areas or mimic enemies with this spell tree.";
+$SkillMiscInfo[$SkillEvasion] = "Your chance to evade physical attacks. Evasion is the most straight-forward skill, and an absolute necessity for frail characters that don't wear armor.";
+$SkillMiscInfo[$SkillThievery] = "Swoop in on your target. Bleed them. Mug them. Then Shadow Walk to safety. Thieves run the risk of losing everything if they steal too much and will be hunted.";
+$SkillMiscInfo[$SkillMining] = "Governs the ability to find better types of ore from stone and crystal, as well as the ability to use some Geoastric tools.";
+$SkillMiscInfo[$SkillWordsmith] = "Fool, rally, inspire - or prepare spells as Glass Idioms. When the time is right, smash your Idioms, or render them as full spells like wizards of old.";
+$SkillMiscInfo[$SkillSurvival] = "Essential for characters that need combat OR tracking skills. It gives access to #compass, #leap, #totem, governs your tree cutting skill, and much more.";
+$SkillMiscInfo[$SkillEndurance] = "Governs your ability to wear robes and improves your health regeneration. Archery damage and weight capacity are also governered by this skill.";
+$SkillMiscInfo[$SkillStrength] = "Governs your ability to wear armor and adds damage bonuses to blunt/slashing weapons.";
+$SkillMiscInfo[$SkillWillpower] = "Governs your mana recharge rate, base spell resistance and wand damage.";
+$SkillMiscInfo[$SkillFocus] = "Governs your spell channeling/recovery times, piercing damage, and influences other skills in small ways";
+$SkillMiscInfo[$SkillVitality] = "Your maximum HP is determined by your VITALITY, level and class. Increased by eating tasty stuff or drinking health concoctions.";
+$SkillMiscInfo[$SkillEnergy] = "Your maximum MANA is determined by your ENERGY, level and class. Increase your energy by drinking potion or reading inspiring scrolls.";
+$SkillMiscInfo[$SkillLuck] = "Governs drop chances for items. With no Luck, enemies will almost never drop their weapons. At high skill levels, you'll find more than you know what to do with!";
+
 
 $SkillIndex[Slashing] = 1;
 $SkillIndex[Piercing] = 2;

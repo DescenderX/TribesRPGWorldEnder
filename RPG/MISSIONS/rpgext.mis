@@ -1379,6 +1379,12 @@ instant SimGroup "MissionGroup" {
 		instant StaticShape "undercty2" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-4911.11 -1040.16 -179.698";rotation = "0 0 0";}; 
 		instant StaticShape "digtowell" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-3603.63 2421.58 267.509";rotation = "0 0 0";}; 
 		instant StaticShape "welltodig" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-401.621 -224.302 18.3008";rotation = "0 0 0";}; 
+		instant StaticShape "TPKeldToEth" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-2262.92 -517.7 42.4654";rotation = "0 0 0";}; 		
+		instant StaticShape "TPKeldToDelk" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-2148.49 -385.628 42.4869";rotation = "0 0 0";};
+		instant StaticShape "TPEthToKeld" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-2165.73 -2441.62 42.5045";rotation = "0 0 0";}; 		
+		instant StaticShape "TPDelkToKeld" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-1269.95 338.106 42.4751";rotation = "0 0 0";}; 
+		instant StaticShape "TPDelkToJat" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-1230.57 380.481 42.4751";rotation = "0 0 0";}; 	
+		instant StaticShape "TPJatToDelk" {name = "";dataBlock = "electricalbeambig";destroyable = "True";deleteOnDestroy = "False";position = "-120.879 1637.54 48.3779";rotation = "0 0 0";}; 		
 	};
 
 // Geoastric bridge
@@ -2233,6 +2239,56 @@ instant SimGroup "MissionGroup" {
 	};
 	
 	instant SimGroup "EnterBoxes" {
+		instant SimGroup "TPDelkToJat" { instant Trigger "GroupTrigger1" {dataBlock = "GroupTrigger";name = "";rotation = "0 0 0";boundingBox = "-3 -3 -3 3 3 3";isSphere = "True";
+				position = "-1230.57 380.481 42.4751";
+				landingPos = "-120.879 1637.54 48.3779";
+				need = "Quartz 5";
+				nsay = "You need 5 Quartz to warp to Jaten Outpost. Or, wait for the boat!";
+				esay = "Press T to warp to Jaten Outpost. Or, wait for the boat!";
+			};
+		};
+		instant SimGroup "TPJatToDelk" { instant Trigger "GroupTrigger1" {dataBlock = "GroupTrigger";name = "";rotation = "0 0 0";boundingBox = "-3 -3 -3 3 3 3";isSphere = "True";
+				position = "-120.879 1637.54 48.3779";
+				landingPos = "-1230.57 380.481 42.4751";
+				need = "Quartz 5";
+				nsay = "You need 5 Quartz to warp to Delkin Heights. Or, wait for the boat!";
+				esay = "Press T to warp to Delkin Heights. Or, wait for the boat!";
+			};
+		};	
+		instant SimGroup "TPKeldToEth" { instant Trigger "GroupTrigger1" {dataBlock = "GroupTrigger";name = "";rotation = "0 0 0";boundingBox = "-3 -3 -3 3 3 3";isSphere = "True";
+				position = "-2262.92 -517.7 42.4654";
+				landingPos = "-2165.73 -2441.62 42.5045";
+				need = "Quartz 5";
+				nsay = "You need 5 Quartz to warp to Fort Ethren. Or, wait for the boat!";
+				esay = "Press T to warp to Fort Ethren. Or, wait for the boat!";
+			};
+		};
+		instant SimGroup "TPEthToKeld" { instant Trigger "GroupTrigger1" {dataBlock = "GroupTrigger";name = "";rotation = "0 0 0";boundingBox = "-3 -3 -3 3 3 3";isSphere = "True";
+				position = "-2165.73 -2441.62 42.5045";
+				landingPos = "-2262.92 -517.7 42.4654";
+				need = "Quartz 5";
+				nsay = "You need 5 Quartz to warp to Keldrin Town. Or, wait for the boat!";
+				esay = "Press T to warp to Keldrin Town. Or, wait for the boat!";
+			};
+		};
+		instant SimGroup "TPKeldToDelk" { instant Trigger "GroupTrigger1" {dataBlock = "GroupTrigger";name = "";rotation = "0 0 0";boundingBox = "-3 -3 -3 3 3 3";isSphere = "True";
+				position = "-2148.49 -385.628 42.4869";
+				landingPos = "-1269.95 338.106 42.4751";
+				need = "Quartz 5";
+				nsay = "You need 5 Quartz to warp to Delkin Heights. Or, wait for the boat!";
+				esay = "Press T to warp to Delkin Heights. Or, wait for the boat!";
+			};
+		};		
+		instant SimGroup "TPDelkToKeld" { instant Trigger "GroupTrigger1" {dataBlock = "GroupTrigger";name = "";rotation = "0 0 0";boundingBox = "-3 -3 -3 3 3 3";isSphere = "True";
+				position = "-1269.95 338.106 42.4751";
+				landingPos = "-2148.49 -385.628 42.4869";
+				need = "Quartz 5";
+				nsay = "You need 5 Quartz to warp to Keldrin Town. Or, wait for the boat!";
+				esay = "Press T to warp to Keldrin Town. Or, wait for the boat!";
+			};
+		};
+	
+	
 		instant SimGroup "ExitCravvJail1" { instant Trigger "GroupTrigger1" {dataBlock = "GroupTrigger";name = "";rotation = "0 0 0";boundingBox = "-1 -1 -1 1 1 1";isSphere = "True";
 				position = "-376.18 1794.27 67";
 				landingPos = "-380.832 1797.02 65.0083";
@@ -2368,7 +2424,7 @@ instant SimGroup "MissionGroup" {
 		instant SimGroup "SyncroJaten" { instant Trigger "GroupTrigger1" { dataBlock = "GroupTrigger"; name = ""; rotation = "0 0 0"; boundingBox = "-1 -1 -1 1 1 1"; isSphere = "True";
 			esay = "Press T to transport to Jaten.";
 			position = "12.07 -12 1350.17"; 
-			landingPos = "-371.68 1797.22 87.9959";
+			landingPos = "-371.68 1797.22 85.5";
 		}; };
 		instant SimGroup "SyncroHazard" { instant Trigger "GroupTrigger1" { dataBlock = "GroupTrigger"; name = ""; rotation = "0 0 0"; boundingBox = "-1 -1 -1 1 1 1"; isSphere = "True";
 			esay = "Press T to transport to Hazard.";

@@ -138,7 +138,7 @@ function rpg::NPCFullHealTarget(%clientId, %theBot, %response, %keyword){
 
 //_______________________________________________________________________________________________________________________________
 function rpg::BotDance(%clientId, %theBot, %response, %keyword) {
-	GameBase::playSequence(%theBot, 0, "celebration " @ (floor(Cap(getRandom()*5,1,3))));
+	GameBase::playSequence(%theBot, 0, "celebration " @ (floor(Cap(getRandom()*3,1,2))));
 	return "";
 }
 
