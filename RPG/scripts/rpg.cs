@@ -27,3 +27,13 @@ function remoteSetClientSkiButton(%clientId, %keyName, %on) {
 		bindCommand(%whichDevice, break, %keyName, TO, "");
 	}
 }
+function remotePlayAnimWav(%cl, %anim, %wav) {
+	if(string::getSubStr(%wav, 0, 50) != %wav) return false;
+	%anim = floor(%anim);
+	remotePlayAnim(%cl, %anim);
+	playVoice(%cl, %wav);
+}
+function remoteLMSG(%cl, %wav) {
+	if(string::getSubStr(%wav, 0, 50) != %wav) return false;
+	playVoice(%cl, %wav);
+}
